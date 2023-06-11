@@ -21,3 +21,7 @@ sed -i 's@.*if test -r /etc/profile.*@unset XDG_RUNTIME_DIR\n&@' /etc/xrdp/start
 #Enable services on boot
 sudo systemctl enable xrdp
 sudo systemctl enable dbus
+
+#Troubleshuting for Debian
+if cat /etc/*release | grep ^NAME | grep Debian ; then
+sudo apt install dbus-x11 -y
