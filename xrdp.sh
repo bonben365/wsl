@@ -23,7 +23,16 @@ sed -i 's@.*if test -r /etc/profile.*@unset XDG_RUNTIME_DIR\n&@' /etc/xrdp/start
 sudo systemctl enable xrdp
 sudo systemctl enable dbus
 
-#Troubleshuting for Debian
+#Fix Authentication Is Required to Create a Color Managed Device
+echo "[Allow Colord all Users]" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+echo "Identity=unix-user:*" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+echo "Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+echo "ResultAny=no" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+echo "ResultInactive=no" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+echo "ResultActive=yes" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
+
+
+#Troubleshooting for Debian
 if cat /etc/*release | grep ^NAME | grep Debian ; then
 echo '[boot]' >> /etc/wsl.conf
 echo 'systemd=true' >> /etc/wsl.conf
