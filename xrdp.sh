@@ -21,5 +21,3 @@ sed -i 's@.*if test -r /etc/profile.*@unset XDG_RUNTIME_DIR\n&@' /etc/xrdp/start
 #Enable services on boot
 sudo systemctl enable xrdp
 sudo systemctl enable dbus
-
-
