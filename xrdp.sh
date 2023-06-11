@@ -31,6 +31,9 @@ echo "ResultAny=no" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.p
 echo "ResultInactive=no" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 echo "ResultActive=yes" >> /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla
 
+#Fix Failed to execute default web browser
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb -y
 
 #Troubleshooting for Debian
 if cat /etc/*release | grep ^NAME | grep Debian ; then
