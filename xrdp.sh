@@ -25,4 +25,5 @@ sudo systemctl enable dbus
 #Troubleshuting for Debian
 if cat /etc/*release | grep ^NAME | grep Debian ; then
 sudo apt install dbus-x11 -y
+sudo apt install net-tools -y
 fi
