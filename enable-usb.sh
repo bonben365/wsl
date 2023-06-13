@@ -6,6 +6,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt install -y build-essential fl
 sudo mkdir /usr/src/$(uname -r)
 cd /usr/src/$(uname -r)
 sudo git clone https://github.com/microsoft/WSL2-Linux-Kernel.git
+cd WSL2-Linux-Kernel
 sudo cp /proc/config.gz config.gz
 sudo gunzip config.gz
 sudo mv config .config
