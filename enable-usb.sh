@@ -2,7 +2,8 @@
 # Build WSL2 kernel with usb-storage support
 # menuconfig -> Device Drivers --> USB support ---> USB Mass Storage support
 ##############################################################################
-sudo apt update && sudo apt upgrade -y && sudo apt install -y build-essential flex bison libgtk2.0-dev libelf-dev libncurses-dev autoconf libudev-dev libtool zip unzip v4l-utils libssl-dev python3-pip cmake git iputils-ping net-tools dwarves
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential flex bison libgtk2.0-dev libelf-dev libncurses-dev autoconf libudev-dev libtool zip unzip v4l-utils libssl-dev python3-pip cmake git iputils-ping net-tools dwarves bc
 cd /tmp
 sudo git clone https://github.com/microsoft/WSL2-Linux-Kernel.git
 cd WSL2-Linux-Kernel
