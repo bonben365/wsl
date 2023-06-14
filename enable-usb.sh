@@ -10,8 +10,7 @@ cd WSL2-Linux-Kernel
 sudo cp /proc/config.gz config.gz
 sudo gunzip config.gz
 sudo mv config .config
-export TERM=screen
-sudo /usr/bin/make menuconfig
+sudo make menuconfig
 sudo make -j$(nproc)
 sudo make modules_install -j$(nproc)
 sudo make install -j$(nproc)
