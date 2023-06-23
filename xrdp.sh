@@ -43,6 +43,14 @@ sudo apt install dbus-x11 -y
 sudo apt install net-tools -y
 fi
 
+#Troubleshooting for Kali Linux
+if cat /etc/*release | grep ^NAME | grep Kali ; then
+echo '[boot]' >> /etc/wsl.conf
+echo 'systemd=true' >> /etc/wsl.conf
+sudo apt install dbus-x11 -y
+sudo apt install net-tools -y
+fi
+
 #Start services
 sudo systemctl start xrdp
 sudo systemctl start dbus
