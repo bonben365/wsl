@@ -66,7 +66,7 @@ then
         }
         }
         # END
-    EOF
+EOF
 
     #### Restart all services
     systemctl restart nginx && systemctl restart php7.4-fpm && systemctl restart mariadb.service
