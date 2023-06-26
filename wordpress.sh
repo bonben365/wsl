@@ -18,16 +18,14 @@ then
     sleep 5
 
     #### Install Packages for nginx and mysql
-    apt -y update && apt -y upgrade
-    apt -y install nginx mariadb-server mariadb-client
+    sudo apt -y update && apt -y upgrade
+    sudo apt -y install nginx mariadb-server mariadb-client
 
     #### Open firewall port for http/https
-    sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-    sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT
     sudo ufw allow http && sudo ufw allow https
 
     #### Start, enable on boot and set root password
-    systemctl restart mariadb.service && systemctl enable mariadb.service
+    sudo systemctl restart mariadb.service && systemctl enable mariadb.service
     mysql -u root -e "UPDATE user SET Password=PASSWORD($mysqlrootpass) WHERE user='root'";
     mysql -u root -e "CREATE USER $db_user@localhost IDENTIFIED BY '$db_password'";
     mysql -u root -e "create database $db_name";
@@ -35,12 +33,12 @@ then
     mysql -u root -e "FLUSH PRIVILEGES";
 
     ####Install PHP and increase file size
-    sudo apt install -y php7.4 php7.4-fpm php7.4-mysql php-common php7.4-cli 
-    sudo apt install -y php7.4-json php7.4-opcache php7.4-readline php7.4-mbstring 
-    sudo apt install -y php7.4-xml php7.4-gd php7.4-curl php7.4-common 
-    sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /etc/php/7.4/fpm/php.ini
-    sudo sed -i 's/post_max_size = 8M/post_max_size = 64M/g' /etc/php/7.4/fpm/php.ini
-    systemctl restart php7.4-fpm && systemctl enable php7.4-fpm
+    sudo apt install php-fpm php-common php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-gd php-xml php-cli php-zip -y
+    sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /etc/php/8*/fpm/php.ini
+    sudo sed -i 's/post_max_size = 8M/post_max_size = 64M/g' /etc/php/8*/fpm/php.ini
+    sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /etc/php/7*/fpm/php.ini
+    sudo sed -i 's/post_max_size = 8M/post_max_size = 64M/g' /etc/php/7*/fpm/php.ini
+    systemctl restart php*-fpm && systemctl enable php*-fpm
 
     ####Download and extract latest WordPress Package
     wget -N "https://wordpress.org/latest.tar.gz" -P /tmp
