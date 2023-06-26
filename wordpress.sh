@@ -1,9 +1,14 @@
 #/bin/sh
+
+version=$(cat /etc/os-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/["]//g' | awk '{print $1}')
+
 #Creating Variables
 domain_name="bonguides.me"
 install_dir="/var/www/$domain_name"
 
-#Creating Random WP Database Credenitals
+if [ $version == "Ubuntu" ]
+then
+    #Creating Random WP Database Credenitals
 db_name="wp`date +%s`"
 db_user=$db_name
 db_password=`date |md5sum |cut -c '1-12'`
@@ -117,3 +122,7 @@ echo "Your site: http://$domain_name"
 echo "WordPress admin: http://$domain_name/wp-admin"
 echo "Install localtion: $install_dir"
 echo "................................................................"
+
+fi
+
+
