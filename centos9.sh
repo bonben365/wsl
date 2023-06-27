@@ -1,4 +1,4 @@
-New-Item -Path "${env:LOCALAPPDATA}\Packages\centstr9" -ItemType Directory -Force
+New-Item -Path "${env:LOCALAPPDATA}\Packages\centstr9" -ItemType Directory -Force | Out-Null
 Set-Location "${env:LOCALAPPDATA}\Packages\centstr9"
 Invoke-Item -Path "${env:LOCALAPPDATA}\Packages\centstr9"
 
