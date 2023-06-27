@@ -2,6 +2,7 @@ New-Item -Path "${env:LOCALAPPDATA}\Packages\centstr9" -ItemType Directory -Forc
 Set-Location "${env:LOCALAPPDATA}\Packages\centstr9"
 Invoke-Item -Path "${env:LOCALAPPDATA}\Packages\centstr9"
 
+Write-Host
 Write-Host 'Downloading CentOS Stream 9 from GitHub...'
 
 $url = 'https://github.com/mishamosher/CentOS-WSL/releases/latest'
