@@ -11,6 +11,7 @@ $downloadUrl = $tagUrl.Replace('tag', 'download') + '/' + "CentOS9-stream.zip"
 $filePath = "${env:LOCALAPPDATA}\Packages\centstr9\CentOS9-stream.zip"
 (New-Object Net.WebClient).DownloadFile($downloadUrl, $filePath)
 
+Write-Host 'Downloading CentOS Stream 9from GitHub...'
 
 #Extraxt downloaded file to a .tar file
 Expand-Archive .\CentOS9-stream.zip
