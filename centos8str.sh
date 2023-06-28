@@ -3,15 +3,10 @@ Set-Location "${env:LOCALAPPDATA}\Packages\centstr8"
 Invoke-Item -Path "${env:LOCALAPPDATA}\Packages\centstr8"
 
 Write-Host
-Write-Host 'Downloading CentOS Stream 9 from GitHub...'
-
-$url = 'https://github.com/mishamosher/CentOS-WSL/releases/latest'
-$request = [System.Net.WebRequest]::Create($url)
-$response = $request.GetResponse()
-$tagUrl = $response.ResponseUri.OriginalString
+Write-Host 'Downloading CentOS Stream 8 from GitHub...'
 
 ###Create the download link
-$downloadUrl = $tagUrl.Replace('tag', 'download') + '/' + "CentOS8-stream.zip"
+$downloadUrl = https://github.com/mishamosher/CentOS-WSL/releases/download/8-stream-20220125/CentOS8-stream.zip
 $filePath = "${env:LOCALAPPDATA}\Packages\centstr8\CentOS8-stream.zip"
 (New-Object Net.WebClient).DownloadFile($downloadUrl, $filePath)
 
