@@ -2,7 +2,7 @@ yum upgrade
 dnf install epel-release -y
 dnf install rpmconf -y
 dnf install yum-utils -y
-rpmconf -a  # answer "n" to both things
+echo n | rpmconf -a  # answer "n" to both things
 package-cleanup --leaves
 package-cleanup --orphans
 dnf -y install http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/centos-stream-repos-9.0-9.el9.noarch.rpm http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/centos-stream-release-9.0-9.el9.noarch.rpm http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/centos-gpg-keys-9.0-9.el9.noarch.rpm
