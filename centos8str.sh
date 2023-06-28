@@ -6,7 +6,7 @@ Write-Host
 Write-Host 'Downloading CentOS Stream 8 from GitHub...'
 
 ###Create the download link
-$downloadUrl = https://github.com/mishamosher/CentOS-WSL/releases/download/8-stream-20220125/CentOS8-stream.zip
+$downloadUrl = "https://github.com/mishamosher/CentOS-WSL/releases/download/8-stream-20220125/CentOS8-stream.zip"
 $filePath = "${env:LOCALAPPDATA}\Packages\centstr8\CentOS8-stream.zip"
 (New-Object Net.WebClient).DownloadFile($downloadUrl, $filePath)
 
