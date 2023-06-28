@@ -9,12 +9,10 @@ dnf -y install http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Package
 curl -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 curl -O https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
 rpm -Uvh *.rpm
-yum update
-dnf clean all
+yum update -y
 rpm -e `rpm -q kernel`
 dnf -y --releasever=9 --allowerasing --setopt=deltarpm=false distro-sync
 dnf clean all
-reboot
 rm -f /var/lib/rpm/__db*
 rpm --rebuilddb
 dnf -y groupupdate "Core" "Minimal Install"
